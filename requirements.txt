@@ -1,2 +1,10 @@
 flask
 flask_cors
+requests
+pycryptodome
+pyjwt
+mysql-connector-python
+waitress
+html-table-parser-python3
+urllib3
+colorama

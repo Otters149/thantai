@@ -5,10 +5,29 @@ from Crypto.Cipher import PKCS1_v1_5
 from Crypto.Random import get_random_bytes
 import base64
 import datetime
+import unicodedata
 
 ###
 import configure
 
+#region General utils
+s1 = u'ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđ₫ďĨĩŨũƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ'
+s0 = u'AAAAEEEIIOOOOUUYaaaaeeeiioooouuyAaDdddIiUuOoUuAaAaAaAaAaAaAaAaAaAaAaAaEeEeEeEeEeEeEeEeIiIiOoOoOoOoOoOoOoOoOoOoOoOoUuUuUuUuUuUuUuYyYyYyYy'
+def str_remove_accents(s):
+    input_str = ''.join(c for c in unicodedata.normalize('NFKC', s)
+                  if unicodedata.category(c) != 'Mn')
+    s = ""
+    for c in input_str:
+        if c in s1:
+            s += s0[s1.index(c)]
+        else:
+            s += c
+    return s   
+#endregion
+
+###
+
+#region Web utils
 secret_key = "mhWv2B5q6i8Zd"
 iss = "thantai"
 
@@ -68,3 +87,9 @@ def str_replace_uncommon_char(origin: str):
     for template in remove_template:
         preprocess = preprocess.replace(template, "")
     return preprocess     
+#endregion
+
+###
+
+#region Modules utils
+#endregion
