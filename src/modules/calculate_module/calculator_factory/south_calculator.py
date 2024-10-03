@@ -29,8 +29,17 @@ class SouthCalculator(Calculator):
 	def __init__(self, all_prizes: dict, calc_config: CalculateConfig, side: SIDE) -> None:
 		super().__init__(all_prizes, calc_config, side)
 
+	def calc_a1(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
+		return super().calc_a1(message, in_calc_result)
+	def calc_a2(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
+		return super().calc_a2(message, in_calc_result)
+	def calc_a3(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
+		return super().calc_a3(message, in_calc_result)
+	def calc_a4(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
+		return super().calc_a4(message, in_calc_result)
+
 	def __calc_dauduoi(self, message: ParseMessage, in_calc_result: CalculateResult, prize_index: int, broker_index: int) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		for channel_code in message.channels_code:
 			for number in message.numbers:
@@ -61,7 +70,7 @@ class SouthCalculator(Calculator):
 		return self.__calc_dauduoi(message, in_calc_result, self.PRIZE_JACKPOT_INDEX, self.CONFIG_3D_DUOI_INDEX)
 	
 	def __calc_dxdauduoi(self, message: ParseMessage, in_calc_result: CalculateResult, prize_index: int, broker_index: int) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		for channel_code in message.channels_code:
 			num_of_number = 0
@@ -88,7 +97,7 @@ class SouthCalculator(Calculator):
 		return self.__calc_dxdauduoi(message, in_calc_result, self.PRIZE_JACKPOT_INDEX, self.CONFIG_4D_DUOI_INDEX)
 	
 	def calc_bao7lo(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		for channel_code in message.channels_code:
 			for number in message.numbers:
@@ -111,7 +120,7 @@ class SouthCalculator(Calculator):
 						   self._calc_config.is_brokers_multiplied)
 	
 	def calc_baodao7lo(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		for channel_code in message.channels_code:
 			num_of_number = 0
@@ -130,7 +139,7 @@ class SouthCalculator(Calculator):
 						   self._calc_config.is_brokers_multiplied)
 	
 	def calc_baolo(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		is_broker_multiplied = self._calc_config.is_brokers_multiplied
 		for channel_code in message.channels_code:
@@ -156,7 +165,7 @@ class SouthCalculator(Calculator):
 								is_broker_multiplied)
 	
 	def calc_baodao(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		is_broker_multiplied = self._calc_config.is_brokers_multiplied
 		for channel_code in message.channels_code:
@@ -183,7 +192,7 @@ class SouthCalculator(Calculator):
 								is_broker_multiplied)
 	
 	def calc_dathang(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		numbers_combinations = self._get_combinations(message.numbers)
 		for combination_number in numbers_combinations:
@@ -215,7 +224,7 @@ class SouthCalculator(Calculator):
 								self._calc_config.is_brokers_multiplied)
 	
 	def calc_daxien(self, message: ParseMessage, in_calc_result: CalculateResult = None) -> CalculateResult:
-		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult()
+		calc_result = in_calc_result.clone() if in_calc_result != None else CalculateResult([])
 		count_win = 0
 		numbers_combinations = self._get_combinations(message.numbers)
 		for combination_number in numbers_combinations:

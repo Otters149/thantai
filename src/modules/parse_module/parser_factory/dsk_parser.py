@@ -123,11 +123,15 @@ class DSKParser(Parser):
 							current_parse_msg.numbers = new_num
 							break
 				if not is_same_type_bet_flag: # That mean: same numbers but didn't same type => use origin numbers
-					current_parse_msg.numbers = self.cache_use_same_number[0]
+					if len(self.cache_use_same_number) > 0:
+						current_parse_msg.numbers = self.cache_use_same_number[0]
+					else:
+						success = False
+						AppLogger.e(f"[PARSE TYPEBET] Fatal Not found cache same number")
 			
 			self.cache_use_same_type.append(type_bet_found)
 			self.cache_use_same_raw_type.append(raw_type_bet_str)
-			self.cache_use_same_number.append(current_parse_msg.numbers)
+			self.cache_use_same_number.append(current_parse_msg.numbers.copy())
 		else:
 			AppLogger.e(f"[PARSE TYPEBET] Fatal: {raw_type_bet_str}")
 		message_str = self._skip_whitespace_dot_and_comma(message_str)
@@ -188,7 +192,7 @@ class DSKParser(Parser):
 		msg_len_before_process = len(handling_str)
 
 		is_checking_skip_error_phrase = False
-		pair_error_index = PairInt()
+		pair_error_index = PairInt(0, msg_len_before_process)
 		while len(handling_str) > 0:
 			has_error_in_signle_loop = False
 			current_parse_msg = ParseMessage.new()

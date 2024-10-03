@@ -54,7 +54,7 @@ def __handle_type_bet(pre_parsed_message: ParseMessage, parsed_message: ParseMes
 					parsed_message.type_bet = "Kiểu đánh dx, số gồm 2 loại (loại có 2 chữ số và loại có 3 chữ số) => Không thể phân biệt là 'đá xiên' hay 'đảo xiu'. Vui lòng xem lại!"
 					return False, parsed_message, next_parsed_message
 				
-			if has_two_digit == 2:
+			if has_two_digit:
 				parsed_message.type_bet = "DAXIEN"
 				if __is_should_convert_channel_to_2d_for_daxien(side, parsed_message.channels_code):
 					parsed_message.channels_code = ['2D']
@@ -76,6 +76,9 @@ def __handle_money(parsed_message: ParseMessage) -> tuple[bool, ParseMessage]:
 	if parsed_message.point_bet_unit == MONEY_UNIT.TRIEU:
 		parsed_message.point_bet_unit = MONEY_UNIT.NGHIN
 		parsed_message.point_bet = str(int(float(parsed_message.point_bet) * 1000))
+	if parsed_message.point_bet == "" or float(parsed_message.point_bet) == 0.0:
+		parsed_message.point_bet = "Tin không có điểm cược"
+		return False, parsed_message
 	return True, parsed_message
 #endregion Handle money
 
@@ -216,10 +219,10 @@ def __get_continuous_linking_numbers(from_number: str, to_number: str) -> tuple[
 	# Internal Method
 	def __get_continuous_linking_numbers_at_diff(from_number: str, to_number: str, diff_index: int) -> list[str]:
 		numbers = []
-		temp = from_number
+		temp_number = from_number
 		for i in range(int(from_number[diff_index]), int(to_number[diff_index]) + 1):
-			temp[diff_index] = f'{i}'
-			numbers.append(temp)
+			temp_number = temp_number[:diff_index] + f'{i}' + temp_number[diff_index + 1:]
+			numbers.append(temp_number)
 		return numbers
 	#=================
 	

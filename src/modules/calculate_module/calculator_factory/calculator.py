@@ -23,7 +23,7 @@ class Calculator(ABC):
 	def _get_number_permutations(self, number: str) -> list[str]:
 		return list(set(["".join(i) for i in permutations(number)]))
 	
-	def _get_combinations(self, list_of_str: list[str]) -> combinations[tuple[str, str]]:
+	def _get_combinations(self, list_of_str: list[str]):# -> combinations[tuple[str, str]]:
 		return combinations(list_of_str, 2)
 
 	def _check_win(self, channel_code: str, number: str, prize_index: int, in_calc_result: CalculateResult, in_count_win: float) -> tuple[CalculateResult, int]:

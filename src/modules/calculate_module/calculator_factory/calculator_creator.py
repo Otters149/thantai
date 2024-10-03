@@ -1,4 +1,3 @@
-
 from src.modules.calculate_module.calculator_factory.calculator import Calculator, SIDE, CalculateConfig
 from src.modules.calculate_module.calculator_factory.south_calculator import SouthCalculator
 from src.modules.calculate_module.calculator_factory.north_calculator import NorthCalculator

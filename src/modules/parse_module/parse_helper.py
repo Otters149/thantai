@@ -134,7 +134,7 @@ TYPES_BET = {
 	# BAO LO
 	"BAYLODAO": ["bao dao bay lo", "dao bay lo", "baodaobaylo", "baodaobayl", "bdaobaylo", "bdbaylo", "baylodao", "bdblo", "baodbaylo", "bdbl", "bd7lo", "bd7l"],
 	"BAOLO7": ["bao bay lo", "baobaylo", "baobayl", "bbaylo", "bbayl", " bay lo", "baylo", "bayl","bao 7 lo", "bao 7 lo", "bao7lo", "bao7l", "b7lo", "b7l", "pao 7 lo", "pao 7lo", "pao7lo", "p7lo", "p7l"],
-	"BAODAO": ["dao bao lo", "dao bl", "dao lo", "dao bao", "bao lo da", "bao lo dao", "bao dao","bl bdao", "blao dao","bl dao", "b dao","dao b","baolodao", "baoloda", "baodao", "daobao", "baodo", "baod", "blodao", "bldao", "daoblo", "dao.lo", "daolo", "daobl", "daob", "dalo", "dolo", "daob", "dbao", "bdao", "dlo", "dab", "bdo", "bdl", "bld", "bd", "db", "pao dao", "paodao", "pdao", "dao.b", "pd", "dl"],
+	"BAODAO": ["dao bao lo", "dao bl", "dao lo", "dao bao", "bao lo da", "bao lo dao", "bao dao","bl bdao", "blao dao","bl dao", "b dao","dao b","baolodao", "baoloda", "baodao", "daobao", "baodo", "baod", "blodao", "bldao", "daoblo", "daolo", "daobl", "daob", "dalo", "dolo", "daob", "dbao", "bdao", "dlo", "dab", "bdo", "bdl", "bld", "bd", "db", "pao dao", "paodao", "pdao", "pd", "dl"],
 	"BAOLO": ["bao lo con ","bao lo","lo bao", "b lo", "baolo", "bao", "blo", "bl", "pao lo", "paolo", "pao", "plo", "loo", "lo", "pl"],
 
 	# DA
@@ -142,7 +142,7 @@ TYPES_BET = {
 	"DATHANG": ["da thang","d thang", "da th", "da t", "d t", "dathang", "dathag", "dthang", "dthag","thang", "dath", "dtg", "dth", "dat", "dt"],
 	"DAXIENVONG": ["da vong xien", "da xien vong", "daaxienvong",  "dxvog", "daxv", "davx", "dxv", "dvx", "xv"],
 	"DAXIEN": ["da moi cap", "da cap", "dacheo xien", "dacheoxien", "da cheo","cheo da", "dacheo", "dache", "da xieng", "da xien", "da xuyen","da xjen", "da x", "daxieng","daxjen", "daxien", "daxuyen", "daxi", "daxc", "dax", "dxien", "xien", "xi","dcheo", "cheo", "che"],
-	"DAVONG": ["da vong con" ,"da vong" , "da dong", "da vog", "davong", "dvong", "dadong","vong", "cheov", "da v", "d v", "dav", "dv", "v"],
+	"DAVONG": ["da vong con" ,"da vong" , "da dong", "da vog", "davong", "dvong", "dvog", "dadong","vong", "cheov", "da v", "d v", "dav", "dv", "v"],
     
 	#
 	"XDUOI2": ["xu"],
