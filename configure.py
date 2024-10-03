@@ -1,4 +1,6 @@
+app_name = "NongTrai"
 app_version = "1.0.0"
+
 client_supported = ["1.0.0"]
 
 allow_origin_collection = ["http://localhost:8080", 
@@ -17,3 +19,12 @@ time_to_get_lottery_result = [
 	(17, 38),	# Mid: 17h38
 	(16, 38)	# South 17h38
 ]
+
+use_database = "MYSQL"
+local_mysql_config = {
+  'user': 'root',
+  'password': '',
+  'host': '127.0.0.1',
+  'port': '3306',
+  'database': 'nongtrai'
+}

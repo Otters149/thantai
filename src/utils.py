@@ -6,9 +6,10 @@ from Crypto.Random import get_random_bytes
 import base64
 import datetime
 import unicodedata
-
+import os, signal
 ###
 import configure
+from src.enums import RESPONSE_CODE
 
 #region General utils
 s1 = u'ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđ₫ďĨĩŨũƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ'
@@ -22,7 +23,7 @@ def str_remove_accents(s):
             s += s0[s1.index(c)]
         else:
             s += c
-    return s   
+    return s
 #endregion
 
 ###
@@ -70,23 +71,26 @@ def server_datetime():
 def jwt_gen(id, role, expired, payload):
     return jwt.encode({"iss": iss, "id": id, "role": role, "exp": expired, "payload": payload}, secret_key, algorithm="HS256")
 
-def jwt_validate(token):
+def jwt_validate(token: str) -> tuple[str | dict[str, any], bool, int]:
     try:
         data = jwt.decode(token, secret_key, issuer=iss, algorithms=["HS256"])
-        return data, True
+        return data, True, RESPONSE_CODE.OK
     except jwt.ExpiredSignatureError as e:
-        return "JWT Expired", False
+        return "JWT Expired", False, RESPONSE_CODE.UNAUTHORIZED
     except jwt.InvalidTokenError as e:
-        return "JWT Invalid", False
+        return "JWT Invalid", False, RESPONSE_CODE.BAD_REQUEST
     except Exception as e:
-        return e, False   
+        return e, False, RESPONSE_CODE.INTERNAL_SERVER_ERROR
 
 def str_replace_uncommon_char(origin: str):
     preprocess = origin
     remove_template = ["\xa0", "'", '"', "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "\\", "?", ".", ",", "|", "{", "}", "[", "]" ";", ":"]
     for template in remove_template:
         preprocess = preprocess.replace(template, "")
-    return preprocess     
+    return preprocess   
+
+def kill_server():
+    os.kill(os.getpid(), signal.SIGINT)  
 #endregion
 
 ###

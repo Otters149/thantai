@@ -21,7 +21,7 @@ def main_route():
 	"""
 		Main Route
 	"""
-	return "Welcome To THANTAI !!!", 200
+	return f"Welcome To {configure.app_name} !!!", 200
 
 @app.route('/version', methods=['GET'])
 def version():
