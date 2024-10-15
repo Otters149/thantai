@@ -342,6 +342,9 @@ def __handle_number(in_parsed_messages: ParseMessage) -> tuple[bool, ParseMessag
 					linked_numbers.append(numbers[index])
 			has_unit_linking = False
 			has_continuous_linking = False
+	if has_unit_linking or has_continuous_linking:
+		return False, parsed_messages # It is linking bet message without second number
+	
 	linked_numbers = __convert_implicit_number_to_explicit_number(linked_numbers)
 	ignores = __convert_implicit_number_to_explicit_number(ignores)
 	parsed_messages.numbers = [element for element in linked_numbers if element not in ignores]
