@@ -1,6 +1,6 @@
 from configure import use_database
 from src.database_connector.dbms.dbms import DBMS
-
+from src.database_connector.dbms.mysql_dbms import MySqlDBMS
 class DBConnector(object):
 	_dbms: DBMS = None
 	_instance = None
@@ -10,7 +10,7 @@ class DBConnector(object):
 		if cls._instance is None:
 			cls._instance = cls.__new__(cls)
 			if use_database == "MYSQL":
-				cls._instance._dbms = DBMS()
+				cls._instance._dbms = MySqlDBMS()
 			else:
 				raise Exception("Not Implementation")
 		return cls._instance

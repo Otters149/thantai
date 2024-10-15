@@ -12,9 +12,10 @@ class MySqlDBMS(DBMS):
 
 	def exe_insert(self, query, params):
 		try:
+			AppLogger.d(str.format(query, params))
 			cnx: PooledMySQLConnection = self.__context.get_connection()
 			cursor = cnx.cursor()
-			cursor.excute(query, params)
+			cursor.execute(query, params)
 			cnx.commit()
 			id = cursor.lastrowid
 			cursor.close()
@@ -28,6 +29,7 @@ class MySqlDBMS(DBMS):
 		
 	def exe_update(self, query, params) -> bool:
 		try:
+			AppLogger.d(str.format(query, params))
 			cnx: PooledMySQLConnection = self.__context.get_connection()
 			cursor = cnx.cursor()
 			cursor.execute(query, params)
@@ -43,6 +45,7 @@ class MySqlDBMS(DBMS):
 		
 	def exe_select(self, query):
 		try:
+			AppLogger.d(str.format(query))
 			cnx: PooledMySQLConnection = self.__context.get_connection()
 			cursor = cnx.cursor()
 			cursor.execute(query)
@@ -58,6 +61,7 @@ class MySqlDBMS(DBMS):
 		
 	def exe_delete(self, query) -> bool:
 		try:
+			AppLogger.d(str.format(query))
 			cnx: PooledMySQLConnection = self.__context.get_connection()
 			cursor = cnx.cursor()
 			cursor.execute(query)
@@ -70,3 +74,6 @@ class MySqlDBMS(DBMS):
 			cursor.close()
 			cnx.close()
 			return False
+		
+	def start_transaction(self):
+		self.__context.auto

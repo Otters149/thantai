@@ -125,17 +125,22 @@ logger = logging.getLogger(__name__)
 class AppLogger:
 	def d(log):
 		if IS_DEV_BUILD:
-			ColorPrint(Colors.WHITE, f"[DEBUG] {log}")
+			print(f"[DEBUG] {log}")
+			# ColorPrint(Colors.WHITE, f"[DEBUG] {log}")
 
 	def i(log):
-		ColorPrint(Colors.GREEN, f"[INFO]: {log}")
+		print(f"[INFO]: {log}")
+		# ColorPrint(Colors.GREEN, f"[INFO]: {log}")
 
 	def w(log):
-		ColorPrint(Colors.YELLOW, f"[WARN]: {log}")
+		print(f"[WARN]: {log}")
+		# ColorPrint(Colors.YELLOW, f"[WARN]: {log}")
 
 	def e(log):
-		ColorPrint(Colors.RED, f"[ERROR]: {log}")
+		print(f"[ERROR]: {log}")
+		# ColorPrint(Colors.RED, f"[ERROR]: {log}")
 
 	def wtf(log):
-		ColorPrint(Colors.PURPLE, f"[WTF]: {log}")
+		print(f"[WTF]: {log}")
+		# ColorPrint(Colors.PURPLE, f"[WTF]: {log}")
 

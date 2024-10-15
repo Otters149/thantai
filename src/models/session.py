@@ -10,4 +10,6 @@ class Session:
 
 	@classmethod
 	def from_query(cls, query_data):
-		return cls(query_data[Session.FIELD_USER_ID], query_data[Session.FIELD_REFRESH_TOKEN], query_data[Session.FIELD_CLIENT_IP])
+		return cls( query_data[Session.FIELD_USER_ID], 
+					query_data[Session.FIELD_REFRESH_TOKEN], 
+					query_data[Session.FIELD_CLIENT_IP] )

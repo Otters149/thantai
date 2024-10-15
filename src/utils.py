@@ -32,6 +32,9 @@ def str_remove_accents(s):
 secret_key = "mhWv2B5q6i8Zd"
 iss = "thantai"
 
+def format_id(id) -> str:
+    return "{0:04}".format(id)
+
 def md5_get_hash(input: str):
     hash = hashlib.md5(input.encode('utf-8')).hexdigest()
     return hash
@@ -68,8 +71,14 @@ def server_timestamp():
 def server_datetime():
     return str(datetime.datetime.now())
 
-def jwt_gen(id, role, expired, payload):
-    return jwt.encode({"iss": iss, "id": id, "role": role, "exp": expired, "payload": payload}, secret_key, algorithm="HS256")
+def jwt_gen(id, role, expired, subscribe_expired, payload):
+    return jwt.encode({"iss": iss, 
+                       "id": id, 
+                       "role": role, 
+                       "exp": expired, 
+                       "subs_exp": subscribe_expired, 
+                       "payload": payload}, 
+                       secret_key, algorithm="HS256")
 
 def jwt_validate(token: str) -> tuple[str | dict[str, any], bool, int]:
     try:

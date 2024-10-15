@@ -11,6 +11,9 @@ allow_origin_collection = ["http://localhost:8080",
 						   "https://daovang.net", 
 						   "https://www.daovang.net"]
 
+
+access_token_expired_time_in_minute = 0.2
+refresh_token_expired_time_in_day = 2
 rsa_private_key_pem = ""
 rsa_public_key_pem = ""
 
